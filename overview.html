@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Presentations Portal</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #191919;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* Header styling */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #aaa;
+      font-size: 1.1rem;
+    }
+
+    /* Dashboard Layout */
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Presentation Cards */
+    .card {
+      background-color: #222;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #42b983; /* Sleek green accent */
+      box-shadow: 0 8px 24px rgba(66, 185, 131, 0.15);
+    }
+    .card h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #999;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+    .card-footer {
+      font-size: 0.85rem;
+      color: #42b983;
+      font-weight: bold;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Slide Deck Hub</h1>
+    <p>Select a presentation below to open it in your browser.</p>
+  </header>
+
+  <main class="menu-container">
+
+    <!-- Presentation 1 (Now points to its new sub-folder) -->
+    <a href="./presentation-one/" class="card">
+      <div>
+        <h2>Project Overview</h2>
+        <p>An introduction to the main repository concepts and framework overview built with Reveal.js.</p>
+      </div>
+      <div class="card-footer">View Slides &rarr;</div>
+    </a>
+
+    <!-- Presentation 2 -->
+    <a href="./project-two/" class="card">
+      <div>
+        <h2>Quarterly Update</h2>
+        <p>A deep dive into project milestones, metrics, and future goals for the current quarter.</p>
+      </div>
+      <div class="card-footer">View Slides &rarr;</div>
+    </a>
+
+    <!-- Add more cards below as needed by duplicating the block above -->
+
+  </main>
+
+</body>
+</html>
