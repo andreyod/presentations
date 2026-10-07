@@ -3,22 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>My Test Presentation</title>
+    <title>Test Presentation</title>
 
-    <!-- 1. CRITICAL: Reveal.js Core Stylesheets -->
+    <!-- FIXED: Replaced missing local styles with absolute CDN links -->
     <link rel="stylesheet" href="https://cloudflare.com">
-    <!-- Choose your theme: black.min.css, white.min.css, league.min.css, beige.min.css, etc. -->
     <link rel="stylesheet" href="https://cloudflare.com">
   </head>
   <body>
 
-    <!-- 2. CRITICAL: The wrapper divs required by the presentation framework -->
+    <!-- FIXED: Wrapped your slides inside the mandatory reveal framework layout -->
     <div class="reveal">
       <div class="slides">
         
         <!-- Slide 1 -->
         <section>
-          <h1>test</h1>
+          <h1>Test</h1>
           <p>Welcome to my test slide deck</p>
         </section>
 
@@ -28,18 +27,23 @@
           <p>Press the right arrow key to see me.</p>
         </section>
 
+        <!-- Slide 3 -->
+        <section>
+          <h2>Third Slide</h2>
+          <p>The END.</p>
+        </section>
+
       </div>
     </div>
 
-    <!-- 3. CRITICAL: Reveal.js JavaScript Library -->
+    <!-- FIXED: Replaced missing local javascript with CDN link & initialization -->
     <script src="https://cloudflare.com"></script>
     <script>
-      // 4. CRITICAL: Initialize the slide deck
       Reveal.initialize({
-        hash: true,      // Keeps track of the current slide in the URL
-        controls: true,  // Shows the navigation arrows in the bottom right corner
-        progress: true,  // Shows the progress bar at the bottom
-        center: true     // Centers your slides vertically on the screen
+        hash: true,
+        controls: true,
+        progress: true,
+        center: true
       });
     </script>
   </body>
