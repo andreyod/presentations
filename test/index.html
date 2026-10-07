@@ -2,57 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>My GitHub Presentation</title>
-    <!-- Load Reveal.js styles from a CDN -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Test Presentation</title>
+
+    <!-- 1. CRITICAL: Reveal.js Core Stylesheets -->
     <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- Choose your theme: black.min.css, white.min.css, league.min.css, beige.min.css, etc. -->
     <link rel="stylesheet" href="https://cloudflare.com">
   </head>
   <body>
+
+    <!-- 2. CRITICAL: The wrapper divs required by the presentation framework -->
     <div class="reveal">
       <div class="slides">
         
         <!-- Slide 1 -->
         <section>
-          <h1>Welcome to My Presentation</h1>
-          <p>Created with Reveal.js and hosted on GitHub Pages</p>
+          <h1>test</h1>
+          <p>Welcome to my test slide deck</p>
         </section>
 
         <!-- Slide 2 -->
         <section>
-          <h2>Why use GitHub Pages?</h2>
-          <ul>
-            <li>It's completely free</li>
-            <li>Easy to share with a simple link</li>
-            <li>Version controlled</li>
-          </ul>
-        </section>
-
-        <!-- Slide 3 (Nested down slide) -->
-        <section>
-          <section>
-            <h2>Slide 3 (Main)</h2>
-            <p>Press the DOWN arrow key to see the sub-slide.</p>
-          </section>
-          <section>
-            <h2>Slide 3 (Sub-slide)</h2>
-            <p>You found the hidden details!</p>
-          </section>
-        </section>
-
-        <!-- Slide 4 -->
-        <section>
-          <h2>Thank You!</h2>
-          <p>The End</p>
+          <h2>Second Slide</h2>
+          <p>Press the right arrow key to see me.</p>
         </section>
 
       </div>
     </div>
 
-    <!-- Load Reveal.js script from a CDN -->
+    <!-- 3. CRITICAL: Reveal.js JavaScript Library -->
     <script src="https://cloudflare.com"></script>
     <script>
+      // 4. CRITICAL: Initialize the slide deck
       Reveal.initialize({
-        hash: true // Allows copying URLs to specific slides
+        hash: true,      // Keeps track of the current slide in the URL
+        controls: true,  // Shows the navigation arrows in the bottom right corner
+        progress: true,  // Shows the progress bar at the bottom
+        center: true     // Centers your slides vertically on the screen
       });
     </script>
   </body>
