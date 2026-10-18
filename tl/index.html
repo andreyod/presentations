@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>איזה טופס למלא?</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        background: #0f1117;
+      }
+      .reveal {
+        font-family: 'Rubik', sans-serif;
+        direction: rtl;
+      }
+      .reveal .slides {
+        text-align: center;
+      }
+
+      .title-slide h1 {
+        font-size: 1.6em;
+        color: #ffcc33;
+      }
+      .title-slide p {
+        color: #aaa;
+        font-size: 0.9em;
+      }
+
+      /* ---- Choice slide layout ---- */
+      .choice-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        gap: 1.5%;
+      }
+      .form-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4em;
+      }
+      .form-label {
+        font-weight: 800;
+        font-size: 1em;
+      }
+      .winner-label { color: #3fa9f5; }
+      .lotto-label { color: #e74c3c; }
+
+      /* Winner 16 form mockup */
+      .ticket {
+        width: 230px;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        font-size: 0.5em;
+      }
+      .winner-ticket {
+        background: linear-gradient(180deg, #0b3d91, #1565c0);
+        border: 2px solid #3fa9f5;
+      }
+      .ticket-head {
+        color: #fff;
+        font-weight: 800;
+        font-size: 1.3em;
+        text-align: center;
+        margin-bottom: 6px;
+        letter-spacing: 1px;
+      }
+      .winner-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+      }
+      .winner-cell {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.35);
+        border-radius: 4px;
+        height: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.9em;
+      }
+      .winner-cell.marked {
+        background: #ffcc33;
+        color: #0b3d91;
+        font-weight: 800;
+      }
+
+      /* Lotto form mockup */
+      .lotto-ticket {
+        background: linear-gradient(180deg, #7a0f0f, #b71c1c);
+        border: 2px solid #e74c3c;
+      }
+      .lotto-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 3px;
+      }
+      .lotto-cell {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.35);
+        border-radius: 50%;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.7em;
+      }
+      .lotto-cell.marked {
+        background: #ffe066;
+        color: #7a0f0f;
+        font-weight: 800;
+      }
+      .lotto-strong {
+        margin-top: 6px;
+        text-align: center;
+        color: #ffe066;
+        font-size: 0.85em;
+        font-weight: 700;
+      }
+
+      /* floating arrows pointing at the forms */
+      .form-col { position: relative; }
+      .point-arrow {
+        font-size: 1.6em;
+        animation: bob 1.2s ease-in-out infinite;
+      }
+      .point-arrow.left { animation-delay: 0.3s; }
+      @keyframes bob {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(8px); }
+      }
+
+      /* ---- Confused man in the middle ---- */
+      .man-col {
+        flex: 0 0 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .man {
+        position: relative;
+        width: 160px;
+        height: 220px;
+        animation: shake 1.8s ease-in-out infinite;
+      }
+      @keyframes shake {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(-4deg); }
+        75% { transform: rotate(4deg); }
+      }
+      .man .head {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: #f1c27d;
+        margin: 0 auto;
+        position: relative;
+        border: 2px solid #c9995c;
+      }
+      .man .eye {
+        width: 8px;
+        height: 8px;
+        background: #333;
+        border-radius: 50%;
+        position: absolute;
+        top: 30px;
+        animation: look 1.8s ease-in-out infinite;
+      }
+      .man .eye.left { left: 16px; }
+      .man .eye.right { left: 42px; }
+      @keyframes look {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-3px); }
+        75% { transform: translateX(3px); }
+      }
+      .man .mouth {
+        width: 22px;
+        height: 10px;
+        border: 2px solid #7a4a2b;
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+        position: absolute;
+        top: 46px;
+        left: 24px;
+        transform: rotate(180deg) scaleX(0.6);
+      }
+      .man .body {
+        width: 90px;
+        height: 100px;
+        background: #4a69bd;
+        border-radius: 20px 20px 10px 10px;
+        margin: -6px auto 0;
+      }
+      .man .arm {
+        position: absolute;
+        width: 60px;
+        height: 14px;
+        background: #4a69bd;
+        border-radius: 10px;
+        top: 92px;
+      }
+      .man .arm.left-arm {
+        right: 95px;
+        transform-origin: right center;
+        animation: raise-left 1.8s ease-in-out infinite;
+      }
+      .man .arm.right-arm {
+        left: 95px;
+        transform-origin: left center;
+        animation: raise-right 1.8s ease-in-out infinite;
+      }
+      @keyframes raise-left {
+        0%, 100% { transform: rotate(10deg); }
+        50% { transform: rotate(-25deg); }
+      }
+      @keyframes raise-right {
+        0%, 100% { transform: rotate(-10deg); }
+        50% { transform: rotate(25deg); }
+      }
+      .question-marks {
+        position: absolute;
+        top: -34px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.4em;
+        color: #ffcc33;
+        font-weight: 800;
+      }
+      .question-marks span {
+        display: inline-block;
+        animation: pop 1.2s ease-in-out infinite;
+      }
+      .question-marks span:nth-child(2) { animation-delay: 0.2s; }
+      .question-marks span:nth-child(3) { animation-delay: 0.4s; }
+      @keyframes pop {
+        0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+        50% { transform: translateY(-10px) scale(1.3); opacity: 1; }
+      }
+
+      .caption {
+        margin-top: 0.6em;
+        font-size: 0.55em;
+        color: #ddd;
+      }
+
+      /* ---- subscribe slide (reused pattern) ---- */
+      .subscribe-slide { direction: rtl; }
+      .subscribe-heading {
+        font-weight: 800;
+        font-size: 2em;
+        color: #fff;
+        margin-bottom: 0.6em;
+      }
+      .subscribe-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+      }
+      .subscribe-btn {
+        background: #ff0000;
+        color: #fff;
+        font-weight: 800;
+        font-size: 0.9em;
+        padding: 0.5em 1.2em;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(255,0,0,0.6);
+        animation: pulse 1.4s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+      }
+      .subscribe-arrow {
+        font-size: 2em;
+        color: #ff0000;
+        animation: bob 1.2s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section class="title-slide">
+          <h1>וינר 16 או לוטו?</h1>
+          <p>הדילמה השבועית הגדולה</p>
+        </section>
+
+        <section>
+          <div class="choice-wrap">
+            <div class="form-col" data-auto-animate>
+              <div class="form-label winner-label">וינר 16</div>
+              <div class="point-arrow left">⬅️</div>
+              <div class="ticket winner-ticket">
+                <div class="ticket-head">WINNER 16</div>
+                <div class="winner-grid">
+                  <div class="winner-cell marked">1</div>
+                  <div class="winner-cell">X</div>
+                  <div class="winner-cell">2</div>
+                  <div class="winner-cell">1</div>
+                  <div class="winner-cell marked">X</div>
+                  <div class="winner-cell">2</div>
+                  <div class="winner-cell">1</div>
+                  <div class="winner-cell">X</div>
+                  <div class="winner-cell marked">2</div>
+                  <div class="winner-cell marked">1</div>
+                  <div class="winner-cell">X</div>
+                  <div class="winner-cell">2</div>
+                  <div class="winner-cell">1</div>
+                  <div class="winner-cell marked">X</div>
+                  <div class="winner-cell">2</div>
+                  <div class="winner-cell">1</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="man-col">
+              <div class="man">
+                <div class="question-marks"><span>?</span><span>?</span><span>?</span></div>
+                <div class="head">
+                  <div class="eye left"></div>
+                  <div class="eye right"></div>
+                  <div class="mouth"></div>
+                </div>
+                <div class="arm left-arm"></div>
+                <div class="arm right-arm"></div>
+                <div class="body"></div>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-label lotto-label">לוטו</div>
+              <div class="point-arrow">➡️</div>
+              <div class="ticket lotto-ticket">
+                <div class="ticket-head">LOTTO</div>
+                <div class="lotto-grid">
+                  <div class="lotto-cell marked">3</div>
+                  <div class="lotto-cell">7</div>
+                  <div class="lotto-cell marked">12</div>
+                  <div class="lotto-cell">19</div>
+                  <div class="lotto-cell marked">24</div>
+                  <div class="lotto-cell">31</div>
+                  <div class="lotto-cell">2</div>
+                  <div class="lotto-cell marked">9</div>
+                  <div class="lotto-cell">15</div>
+                  <div class="lotto-cell">20</div>
+                  <div class="lotto-cell marked">27</div>
+                  <div class="lotto-cell">35</div>
+                </div>
+                <div class="lotto-strong">מספר חזק: 6</div>
+              </div>
+            </div>
+          </div>
+          <div class="caption">כל שבוע מחדש... לאן הכסף הולך הפעם?</div>
+        </section>
+
+        <section class="subscribe-slide">
+          <div class="subscribe-heading">בשבוע הבא נגלה מי ניצח 🤷</div>
+          <div class="subscribe-row">
+            <div class="subscribe-arrow">⬆️</div>
+            <div class="subscribe-btn">הירשמו לעדכונים</div>
+            <div class="subscribe-arrow">⬆️</div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        rtl: true,
+        center: true
+      });
+    </script>
+  </body>
+</html>
