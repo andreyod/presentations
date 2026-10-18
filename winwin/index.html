@@ -59,6 +59,61 @@
         margin-top: 0.4em;
         unicode-bidi: plaintext;
       }
+
+      .subscribe-slide {
+        direction: rtl;
+      }
+      .subscribe-heading {
+        font-weight: 800;
+        font-size: 2em;
+        color: #ffffff;
+        margin-bottom: 0.6em;
+      }
+      .subscribe-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2em;
+      }
+      .subscribe-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        background: #ff0000;
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 1.6em;
+        padding: 0.4em 1em;
+        border-radius: 0.3em;
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+        animation: pulse 1.4s ease-in-out infinite;
+      }
+      .bell-icon {
+        font-size: 1.8em;
+        display: inline-block;
+        animation: ring 1.8s ease-in-out infinite;
+        transform-origin: top center;
+      }
+      .point-arrow {
+        font-size: 2.4em;
+        color: #ffcc33;
+        display: inline-block;
+        animation: point 1s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+      }
+      @keyframes ring {
+        0%, 50%, 100% { transform: rotate(0deg); }
+        5%, 15% { transform: rotate(15deg); }
+        10%, 20% { transform: rotate(-15deg); }
+        25% { transform: rotate(0deg); }
+      }
+      @keyframes point {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-15px); }
+      }
     </style>
   </head>
   <body>
@@ -184,6 +239,15 @@
 
         <section class="image-slide">
           <img src="last.png" alt="סיום">
+        </section>
+
+        <section class="subscribe-slide">
+          <div class="subscribe-heading">אהבתם? אל תפספסו את הבא!</div>
+          <div class="subscribe-row">
+            <span class="point-arrow">⟵</span>
+            <span class="subscribe-btn"><span class="bell-icon">🔔</span> Subscribe</span>
+            <span class="subscribe-btn"><span class="bell-icon">🔔</span> להצטרפות</span>
+          </div>
         </section>
 
       </div>
