@@ -64,9 +64,23 @@
         color: #ffe066;
         margin-top: 0.2em;
       }
+      .odds-stack {
+        position: relative;
+        margin-top: 0.2em;
+      }
+      .odds-stack .odds-text {
+        margin-top: 0;
+      }
+      .odds-text-struck {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-decoration: line-through;
+      }
       .odds-text-correction {
         color: #33cc77;
-        margin-top: 0;
+        margin-top: 0.2em;
       }
 
       /* Winner 16 form mockup */
@@ -381,8 +395,9 @@
                   <div class="winner-cell">1</div>
                 </div>
               </div>
-              <div class="odds-text fragment" data-fragment-index="0">
-                <span class="fragment highlight-strike" data-fragment-index="1">~43 מיליון אפשרויות</span>
+              <div class="odds-stack">
+                <div class="odds-text fragment" data-fragment-index="0">~43 מיליון אפשרויות</div>
+                <div class="odds-text odds-text-struck fragment" data-fragment-index="1">~43 מיליון אפשרויות</div>
               </div>
               <div class="odds-text odds-text-correction fragment" data-fragment-index="1">~59 אלף אפשרויות</div>
             </div>
