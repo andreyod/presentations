@@ -132,11 +132,11 @@
 
       /* floating arrows pointing at the forms */
       .form-col { position: relative; }
-      .point-arrow {
+      .form-arrow {
         font-size: 1.6em;
         animation: bob 1.2s ease-in-out infinite;
       }
-      .point-arrow.left { animation-delay: 0.3s; }
+      .form-arrow.left { animation-delay: 0.3s; }
       @keyframes bob {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(8px); }
@@ -255,38 +255,69 @@
         color: #ddd;
       }
 
-      /* ---- subscribe slide (reused pattern) ---- */
-      .subscribe-slide { direction: rtl; }
+      /* ---- subscribe slide (same as winwin) ---- */
+      .subscribe-slide {
+        direction: rtl;
+      }
       .subscribe-heading {
         font-weight: 800;
         font-size: 2em;
-        color: #fff;
+        color: #ffffff;
         margin-bottom: 0.6em;
       }
       .subscribe-row {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1em;
+        gap: 1.2em;
       }
       .subscribe-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4em;
         background: #ff0000;
-        color: #fff;
+        color: #ffffff;
         font-weight: 800;
-        font-size: 0.9em;
-        padding: 0.5em 1.2em;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(255,0,0,0.6);
+        font-size: 1.25em;
+        padding: 0.3em 0.8em;
+        border-radius: 0.3em;
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
         animation: pulse 1.4s ease-in-out infinite;
+      }
+      .bell-icon {
+        font-size: 1.8em;
+        display: inline-block;
+        animation: ring 1.8s ease-in-out infinite;
+        transform-origin: top center;
+      }
+      .point-arrow {
+        font-size: 2.4em;
+        color: #ffcc33;
+        display: inline-block;
+      }
+      .point-arrow-left {
+        animation: point-left 1s ease-in-out infinite;
+      }
+      .point-arrow-right {
+        animation: point-right 1s ease-in-out infinite;
       }
       @keyframes pulse {
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.08); }
       }
-      .subscribe-arrow {
-        font-size: 2em;
-        color: #ff0000;
-        animation: bob 1.2s ease-in-out infinite;
+      @keyframes ring {
+        0%, 50%, 100% { transform: rotate(0deg); }
+        5%, 15% { transform: rotate(15deg); }
+        10%, 20% { transform: rotate(-15deg); }
+        25% { transform: rotate(0deg); }
+      }
+      @keyframes point-left {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-15px); }
+      }
+      @keyframes point-right {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(15px); }
       }
     </style>
   </head>
@@ -296,14 +327,13 @@
 
         <section class="title-slide">
           <h1>וינר 16 או לוטו?</h1>
-          <p>הדילמה השבועית הגדולה</p>
         </section>
 
         <section>
           <div class="choice-wrap">
             <div class="form-col" data-auto-animate>
               <div class="form-label winner-label">וינר 16</div>
-              <div class="point-arrow left">⬅️</div>
+              <div class="form-arrow left">⬅️</div>
               <div class="ticket winner-ticket">
                 <div class="ticket-head">WINNER 16</div>
                 <div class="winner-grid">
@@ -343,7 +373,7 @@
 
             <div class="form-col">
               <div class="form-label lotto-label">לוטו</div>
-              <div class="point-arrow">➡️</div>
+              <div class="form-arrow">➡️</div>
               <div class="ticket lotto-ticket">
                 <div class="ticket-head">LOTTO</div>
                 <div class="lotto-grid">
@@ -364,15 +394,15 @@
               </div>
             </div>
           </div>
-          <div class="caption">כל שבוע מחדש... לאן הכסף הולך הפעם?</div>
         </section>
 
         <section class="subscribe-slide">
-          <div class="subscribe-heading">בשבוע הבא נגלה מי ניצח 🤷</div>
+          <div class="subscribe-heading">אהבתם? אל תפספסו את הבא!</div>
           <div class="subscribe-row">
-            <div class="subscribe-arrow">⬆️</div>
-            <div class="subscribe-btn">הירשמו לעדכונים</div>
-            <div class="subscribe-arrow">⬆️</div>
+            <span class="point-arrow point-arrow-left">⟵</span>
+            <span class="subscribe-btn"><span class="bell-icon">🔔</span> Subscribe</span>
+            <span class="subscribe-btn"><span class="bell-icon">🔔</span> להצטרפות</span>
+            <span class="point-arrow point-arrow-right">⟶</span>
           </div>
         </section>
 
@@ -383,7 +413,8 @@
     <script>
       Reveal.initialize({
         hash: true,
-        rtl: true,
+        controls: true,
+        progress: true,
         center: true
       });
     </script>
