@@ -50,6 +50,9 @@
       .form-label {
         font-weight: 800;
         font-size: 1em;
+        height: 1.2em;
+        display: flex;
+        align-items: center;
       }
       .winner-label { color: #3fa9f5; }
       .lotto-label { color: #e74c3c; }
@@ -57,10 +60,14 @@
       /* Winner 16 form mockup */
       .ticket {
         width: 230px;
+        height: 230px;
         border-radius: 10px;
         padding: 10px;
         box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         font-size: 0.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
       .winner-ticket {
         background: linear-gradient(180deg, #0b3d91, #1565c0);
@@ -134,6 +141,10 @@
       .form-col { position: relative; }
       .form-arrow {
         font-size: 1.6em;
+        height: 1.4em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         animation: bob 1.2s ease-in-out infinite;
       }
       .form-arrow.left { animation-delay: 0.3s; }
@@ -153,6 +164,7 @@
         position: relative;
         width: 160px;
         height: 220px;
+        margin-top: 40px;
         animation: shake 1.8s ease-in-out infinite;
       }
       @keyframes shake {
@@ -231,12 +243,13 @@
       }
       .question-marks {
         position: absolute;
-        top: -34px;
+        top: -44px;
         left: 50%;
         transform: translateX(-50%);
         font-size: 1.4em;
         color: #ffcc33;
         font-weight: 800;
+        z-index: 2;
       }
       .question-marks span {
         display: inline-block;
